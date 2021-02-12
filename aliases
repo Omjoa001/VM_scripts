@@ -1,0 +1,13 @@
+# This file contains useful variables and aliases
+# Append this to a .bashrc file
+
+## Manager aliases
+# Useful vars
+WWW1=192.168.131.223
+WWW2=192.168.132.166
+BALANCER=192.168.128.113
+
+# Useful aliases
+alias sshw1='ssh ubuntu@$WWW1'
+alias sshw2='ssh ubuntu@$WWW2'
+alias sshb='ssh ubuntu@$BALANCER'
