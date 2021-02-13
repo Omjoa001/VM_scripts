@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # curl an ip every second.
-# if no ip is specified, it pings balancer
+# if no ip is specified, it curls balancer
 
 BALANCER=10.212.138.40
 if [ -z $1 ]; then
