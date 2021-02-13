@@ -1,15 +1,22 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
+#set -x
 
 # Creates a balancer vm
 
 # WIP
 
+DIR=~/dcsg2003-scripts
+
 openstack server create \
-	--flavor 3d0d6b55-971e-4fe6-9c90-f9c059ff70ca \  # m1.tiny
-	--image  1676adb4-9657-42ed-b31f-b3907cbcd697 \  # Ubuntu Server 18.04 LTS (Bionic Beaver) amd64
+	--image 1676adb4-9657-42ed-b31f-b3907cbcd697 \
+	--flavor 3d0d6b55-971e-4fe6-9c90-f9c059ff70ca \
 	--key-name manager \
-	--file ./balancer_config.sh \ 		 	 # Installs haproxy n stuff
-	balancer
+	--user-data $DIR/config_scripts/balancer_config.sh \
+	--file /etc/haproxy/haproxy.cfg=$DIR/haproxy.cfg \
+	balancer 
+
+sleep 30
 
 openstack server add floating ip balancer 10.212.138.40 
+
 
