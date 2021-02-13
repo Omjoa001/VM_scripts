@@ -1,4 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# curl balancer every second to check if load balancing works.
-while true; do curl 10.212.138.40; sleep 1; done
+# curl an ip every second.
+# if no ip is specified, it pings balancer
+
+BALANCER=10.212.138.40
+if [ -z $1 ]; then
+	while true; do curl $BALANCER; sleep 1; done;
+else
+	while true; do curl $1; sleep 1; done;
+fi
+
