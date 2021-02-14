@@ -12,9 +12,9 @@ ssh $DB1 cp cockroach-v20.2.4.linux-amd64/cockroach /usr/local/bin
 
 
 # This hasn't been tested
-ssh $DB1 mkdir /bfdata
-ssh $DB1 cockroach start --insecure --store=/bfdata --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --background --join=localhost:26257
-ssh $DB1 cockroach init --insecure --host=localhost:26257
+ssh $DB1 sudo mkdir /bfdata
+ssh $DB1 sudo cockroach start --insecure --store=/bfdata --listen-addr=0.0.0.0:26257 --http-addr=0.0.0.0:8080 --background --join=localhost:26257
+ssh $DB1 sudo cockroach init --insecure --host=localhost:26257
 
 # No clue if this works
 ssh $DB1 cockroach sql --insecure --host=localhost:26257 --execute "
