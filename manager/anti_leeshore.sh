@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+set -x -euo pipefail
 
 ## Anti-Leeshore
 # Re-enable vms that have been shut down by leeshore
@@ -19,10 +19,10 @@ SHUTDOWN=$(openstack server list | grep SHUTOFF | awk '{print $4}')
 
 for SERVER in $SHUTDOWN; do
     if [ "$SERVER" != "worker1" ] && [ "$SERVER" != "worker2" ]; then
-
         openstack server start $SERVER
 
-        if [ "$SERVER" -eq "db1" ]; then
+        if [ "$SERVER" == "db1" ]; then
+            sleep 30
             ../db/start_db.sh
         fi
 
