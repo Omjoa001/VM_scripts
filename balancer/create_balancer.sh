@@ -5,6 +5,7 @@ set -x
 
 # Image:  Ubuntu Server 18.04 LTS (Bionic Beaver) amd64
 # Flavor: m1.tiny
+# Not sure if the file flag works, but the intention is to inject the haproxy conf into the vm.
 
 DIR=~/dcsg2003-scripts/balancer
 
